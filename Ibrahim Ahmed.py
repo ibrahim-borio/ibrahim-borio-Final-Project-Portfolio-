@@ -23,17 +23,19 @@ t2.mark_as_done()
 
 for task in [t1, t2, t3]:
     task.display()
-photos = ["Photo1", "Photo2", "Photo3"]
-stack = []
+    
+let photos = ["Photo1", "Photo2", "Photo3"];
+let stack = [];
 
-# المستخدم يتصفح الصور
-for p in photos:
-    stack.append(p)
+// المستخدم يتصفح الصور
+photos.forEach(photo => stack.push(photo));
 
-# Back functionality
-while stack:
-    current = stack.pop()
-    print("Back to:", current)
+// Back functionality
+while (stack.length > 0) {
+    let current = stack.pop();
+    console.log("Back to:", current);
+}
+
 #-- Create Tables
 CREATE TABLE tasks (
     task_id INT PRIMARY KEY,
@@ -121,18 +123,18 @@ m1.borrow(b1)
 b1.display()
 b2.display()
 
-orders = ["Pizza", "Burger", "Salad", "Drinks"]
+let orders = ["Pizza", "Burger", "Salad", "Drinks"];
 
-# Add new order
-orders.append("Ice Cream")
+// إضافة طلب جديد
+orders.push("Ice Cream");
 
-# Remove Burger
-orders.remove("Burger")
+// حذف Burger
+orders = orders.filter(order => order !== "Burger");
 
-# Print updated list
-print("Order List:")
-for order in orders:
-    print("-", order)
+// طباعة القائمة
+console.log("Order List:");
+orders.forEach(order => console.log("-", order));
+
 
 -- Create Tables
 CREATE TABLE Authors (
@@ -220,13 +222,13 @@ t1.introduce()
 t1.teach()
 
 
-from collections import deque
+let queue = ["Customer 1", "Customer 2", "Customer 3"];
 
-queue = deque(["Customer 1", "Customer 2", "Customer 3"])
-
-while queue:
-    c = queue.popleft()
-    print("Served:", c)
+// خدمة العملاء بالترتيب
+while (queue.length > 0) {
+    let customer = queue.shift(); // يطلع أول واحد في الطابور
+    console.log("Served:", customer);
+}
 
 -- Create Tables
 CREATE TABLE menu_items (
@@ -316,15 +318,17 @@ p2.sell(3)      # بيع 3 وحدات
 for product in [p1, p2, p3]:
     product.display()
 
-graph = {
+let graph = {
     "Station A": ["Station B", "Station C"],
     "Station B": ["Station A", "Station D"],
     "Station C": ["Station A", "Station D"],
     "Station D": ["Station B", "Station C"]
+};
+
+for (let station in graph) {
+    console.log(`${station} is connected to ${graph[station]}`);
 }
 
-for station, connected in graph.items():
-    print(f"{station} is connected to {connected}")
 
 -- Create Tables
 CREATE TABLE Jobs (
